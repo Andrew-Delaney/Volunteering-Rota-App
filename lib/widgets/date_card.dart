@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hh_rota/utils/day_suffix.dart';
+import 'package:hh_rota/utils/styles.dart';
 import 'package:intl/intl.dart';
 
 class DateCard extends StatefulWidget {
@@ -22,10 +23,24 @@ class _DateCardState extends State<DateCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        padding: EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+                width: 2.0,
+                color: Theme.of(context).dividerColor
+            ),
+          ),
+        ),
         child: Row(
           children: <Widget>[
             Expanded(
-              child: Text(dayFormatter.format(date) + getDaySuffix(date.day) + ', ' + monthFormatter.format(date)),
+                child: Text(
+                  dayFormatter.format(date) + getDaySuffix(date.day) + ', ' + monthFormatter.format(date),
+                  style: TextStyle(
+                    fontSize: Styles.fontSizeLargest
+                  ),
+                ),
             ),
             Expanded(
                 child: Text('')

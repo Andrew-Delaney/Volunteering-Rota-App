@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hh_rota/model/month.dart';
+import 'package:hh_rota/utils/styles.dart';
 
 class MonthDisplay extends StatefulWidget {
   MonthDisplay();
@@ -10,7 +11,6 @@ class MonthDisplay extends StatefulWidget {
 
 class _MonthDisplayState extends State<MonthDisplay> {
   int monthIndex = new DateTime.now().month - 1;
-  final double size = 50.0;
 
   _MonthDisplayState();
 
@@ -33,7 +33,7 @@ class _MonthDisplayState extends State<MonthDisplay> {
           Expanded(
             child: IconButton(
               icon: Icon(Icons.chevron_left),
-              iconSize: size,
+              iconSize: Styles.iconSizeLarge,
               onPressed: () {
                 setState(() {
                   monthIndex = (monthIndex - 1) % Month.values.length;
@@ -46,7 +46,7 @@ class _MonthDisplayState extends State<MonthDisplay> {
                 child: Text(
                   monthToString(Month.values[monthIndex]),
                   style: TextStyle(
-                      fontSize: size / 2.5,
+                      fontSize: Styles.fontSizeLargest,
 
                   )
                 ),
@@ -54,7 +54,7 @@ class _MonthDisplayState extends State<MonthDisplay> {
           Expanded(
             child: IconButton(
               icon: Icon(Icons.chevron_right),
-              iconSize: size,
+              iconSize: Styles.iconSizeLarge,
               onPressed: () {
                 setState(() {
                   monthIndex = (monthIndex + 1) % Month.values.length;
