@@ -43,7 +43,27 @@ class _DateCardState extends State<DateCard> {
                 ),
             ),
             Expanded(
-                child: Text('')
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black87, width: 2.0)
+                  ),
+                  child: FlatButton(
+                      onPressed: () {
+                        print('Open the volunteer role screen');
+                      },
+                      child: Center(
+                        child: Text(
+                          'Select volunteer role',
+                          style: TextStyle(
+                            fontSize: Styles.fontSizeSmall,
+                            color: Colors.black26,
+                          ),
+                        ),
+                      )
+                  ),
+                )
             )
           ],
         )
