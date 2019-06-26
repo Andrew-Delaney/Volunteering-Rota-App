@@ -38,12 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     DateTime currentDate = DateTime.now();
 
-    for (int i = 0; i < 100; i++) {
-        DateTime nextAvailableDay = getNextVolunteeringDay(currentDate);
-        currentDate = nextAvailableDay;
-        volunteeringDays.add(DateCard(nextAvailableDay));
-    }
-
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         appBar: AppBar(
@@ -62,8 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               MonthDisplay(),
               Expanded(
-                child: ListView(
-                  children: volunteeringDays,
+                child: ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    DateTime nextAvailableDay = getNextVolunteeringDay(currentDate);
+                    currentDate = nextAvailableDay;
+                    return DateCard(nextAvailableDay);
+                  },
                 ),
               )
             ],
