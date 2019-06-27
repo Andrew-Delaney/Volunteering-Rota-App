@@ -56,7 +56,7 @@ class _DateCardState extends State<DateCard> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) {
-                            return VolunteerForm(username: username);
+                            return VolunteerForm(username);
                           })
                         );
                       },
