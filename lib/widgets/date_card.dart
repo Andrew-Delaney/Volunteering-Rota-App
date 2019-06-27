@@ -11,17 +11,19 @@ class DateCard extends StatefulWidget {
   DateCard(this.dateString, this.username);
 
   @override
-  _DateCardState createState() => _DateCardState(this.dateString, this.username);
+  DateCardState createState() => DateCardState(this.dateString, this.username);
 }
 
-class _DateCardState extends State<DateCard> {
+class DateCardState extends State<DateCard> {
 
   DateTime date;
   final String username;
   final DateFormat dayFormatter = new DateFormat('EEE d');
   final DateFormat monthFormatter = new DateFormat('MMM');
 
-  _DateCardState(this.date, this.username);
+  String volunteeringRole = 'Select volunteer role';
+
+  DateCardState(this.date, this.username);
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +58,13 @@ class _DateCardState extends State<DateCard> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) {
-                            return VolunteerForm(username);
+                            return VolunteerForm(username, this);
                           })
                         );
                       },
                       child: Center(
                         child: Text(
-                          'Select volunteer role',
+                          volunteeringRole,
                           style: TextStyle(
                             fontSize: Styles.fontSizeSmall,
                             color: Colors.black26,
@@ -75,5 +77,11 @@ class _DateCardState extends State<DateCard> {
           ],
         )
     );
+  }
+
+  void updateVolunteeringRole(String newRole) {
+    setState(() {
+      volunteeringRole = newRole;
+    });
   }
 }

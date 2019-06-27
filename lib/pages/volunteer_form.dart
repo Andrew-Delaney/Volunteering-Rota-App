@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hh_rota/pages/all_dates.dart';
 import 'package:hh_rota/utils/styles.dart';
 import 'package:hh_rota/widgets/app_bar.dart';
+import 'package:hh_rota/widgets/date_card.dart';
 
 class VolunteerForm extends StatefulWidget {
   final String username;
+  final DateCardState dateCard;
 
-  VolunteerForm(this.username);
+  VolunteerForm(this.username, this.dateCard);
 
   @override
   _VolunteerFormState createState() => _VolunteerFormState(username);
@@ -113,7 +116,8 @@ class _VolunteerFormState extends State<VolunteerForm> {
                       height: 50.0,
                       child: RaisedButton(
                         onPressed: () {
-                          print('Confirm role');
+                          widget.dateCard.updateVolunteeringRole(volunteerRole);
+                          Navigator.of(context).pop();
                         },
                         child: Text(
                           'Confirm',
@@ -131,7 +135,7 @@ class _VolunteerFormState extends State<VolunteerForm> {
                           height: 50.0,
                           child: RaisedButton(
                             onPressed: () {
-                              print('Cancel sign-up');
+                              Navigator.of(context).pop();
                             },
                             child: Text(
                               'Cancel',
