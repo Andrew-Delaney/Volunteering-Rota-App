@@ -116,7 +116,10 @@ class _VolunteerFormState extends State<VolunteerForm> {
                       height: 50.0,
                       child: RaisedButton(
                         onPressed: () {
-                          widget.dateCard.updateVolunteeringRole(volunteerRole);
+                          if (volunteerRole != null && volunteerRole != '') {
+                            widget.dateCard
+                                .updateVolunteeringRole(volunteerRole);
+                          }
                           Navigator.of(context).pop();
                         },
                         child: Text(

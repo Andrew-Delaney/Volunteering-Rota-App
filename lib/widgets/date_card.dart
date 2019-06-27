@@ -22,6 +22,7 @@ class DateCardState extends State<DateCard> {
   final DateFormat monthFormatter = new DateFormat('MMM');
 
   String volunteeringRole = 'Select volunteer role';
+  bool noHintText = false;
 
   DateCardState(this.date, this.username);
 
@@ -67,7 +68,7 @@ class DateCardState extends State<DateCard> {
                           volunteeringRole,
                           style: TextStyle(
                             fontSize: Styles.fontSizeSmall,
-                            color: Colors.black26,
+                            color: noHintText ? Colors.black87 : Colors.black26,
                           ),
                         ),
                       )
@@ -82,6 +83,9 @@ class DateCardState extends State<DateCard> {
   void updateVolunteeringRole(String newRole) {
     setState(() {
       volunteeringRole = newRole;
+      if (newRole != null && newRole != '') {
+        noHintText = true;
+      }
     });
   }
 }
