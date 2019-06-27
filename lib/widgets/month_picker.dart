@@ -17,11 +17,11 @@ class _MonthDisplayState extends State<MonthDisplay> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: new EdgeInsets.symmetric(
+      padding: EdgeInsets.symmetric(
         vertical: 8.0
       ),
-      decoration: new BoxDecoration(
-          border: new Border(
+      decoration: BoxDecoration(
+          border: Border(
             bottom: BorderSide(
                 width: 2.0,
                 color: Theme.of(context).dividerColor
