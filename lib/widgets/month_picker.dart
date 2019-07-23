@@ -3,16 +3,20 @@ import 'package:hh_rota/model/month.dart';
 import 'package:hh_rota/utils/styles.dart';
 
 class MonthDisplay extends StatefulWidget {
-  MonthDisplay();
+  final ScrollController scrollController;
+
+  MonthDisplay(this.scrollController);
 
   @override
-  _MonthDisplayState createState() => _MonthDisplayState();
+  MonthDisplayState createState() => MonthDisplayState(this.scrollController);
 }
 
-class _MonthDisplayState extends State<MonthDisplay> {
-  int monthIndex = new DateTime.now().month - 1;
+class MonthDisplayState extends State<MonthDisplay> {
+  int monthIndex = new DateTime.now().month;
+  ScrollController scrollController;
+  double offset = 0;
 
-  _MonthDisplayState();
+  MonthDisplayState(this.scrollController);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,11 @@ class _MonthDisplayState extends State<MonthDisplay> {
               iconSize: Styles.iconSizeLarge,
               onPressed: () {
                 setState(() {
-                  monthIndex = (monthIndex - 1) % Month.values.length;
+                  if (offset > 0) {
+                    offset -= 1400.0;
+                    scrollController.animateTo(offset, duration: Duration(seconds: 2), curve: Curves.easeInOut);
+                    monthIndex = (monthIndex - 1) % Month.values.length;
+                  }
                 });
               },
             ),
@@ -57,6 +65,8 @@ class _MonthDisplayState extends State<MonthDisplay> {
               iconSize: Styles.iconSizeLarge,
               onPressed: () {
                 setState(() {
+                  offset += 1400.0;
+                  scrollController.animateTo(offset, duration: Duration(seconds: 2), curve: Curves.easeInOut);
                   monthIndex = (monthIndex + 1) % Month.values.length;
                 });
                 },

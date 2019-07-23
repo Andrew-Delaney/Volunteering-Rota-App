@@ -16,15 +16,18 @@ class AllDates extends StatelessWidget {
   Widget build(BuildContext context) {
     DateTime currentDate = DateTime.now();
 
+    ScrollController scrollController = new ScrollController();
+
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         appBar: HHAppBar(username: username),
         body: Center(
           child: Column(
             children: <Widget>[
-              MonthDisplay(),
+              MonthDisplay(scrollController),
               Expanded(
                 child: ListView.builder(
+                  controller: scrollController,
                   itemBuilder: (BuildContext context, int index) {
                     DateTime nextAvailableDay = getNextVolunteeringDay(currentDate);
                     currentDate = nextAvailableDay;

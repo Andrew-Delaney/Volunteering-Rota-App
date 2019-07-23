@@ -110,28 +110,6 @@ class _VolunteerFormState extends State<VolunteerForm> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                      child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 8.0),
-                    child: ButtonTheme(
-                      height: 50.0,
-                      child: RaisedButton(
-                        onPressed: () {
-                          if (volunteerRole != null && volunteerRole != '') {
-                            widget.dateCard
-                                .updateVolunteeringRole(volunteerRole);
-                          }
-                          Navigator.of(context).pop();
-                        },
-                        child: Text(
-                          'Confirm',
-                          style: TextStyle(fontSize: Styles.fontSizeLarger),
-                        ),
-                        color: Colors.green,
-                        textColor: Colors.white,
-                      ),
-                    ),
-                  )),
-                  Expanded(
                     child: Container(
                         margin: EdgeInsets.symmetric(vertical: 8.0),
                         child: ButtonTheme(
@@ -149,8 +127,31 @@ class _VolunteerFormState extends State<VolunteerForm> {
                           ),
                         )),
                   ),
+                  Expanded(
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 8.0),
+                        child: ButtonTheme(
+                          height: 50.0,
+                          child: RaisedButton(
+                            onPressed: () {
+                              if (volunteerRole != null && volunteerRole != '') {
+                                widget.dateCard
+                                    .updateVolunteeringRole(volunteerRole);
+                              }
+                              Navigator.of(context).pop();
+                            },
+                            child: Text(
+                              'Confirm',
+                              style: TextStyle(fontSize: Styles.fontSizeLarger),
+                            ),
+                            color: Colors.green,
+                            textColor: Colors.white,
+                          ),
+                        ),
+                      )),
                 ],
               ),
+
             ),
           ],
         ),
